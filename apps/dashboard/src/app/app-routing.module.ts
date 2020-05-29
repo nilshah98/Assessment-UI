@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from '@workspace/ui-login';
 
 const routes: Routes = [
-    { path: '', loadChildren: './home/home.module#HomeModule'},
-    { path: 'projects', loadChildren: './projects/projects.module#ProjectsModule'},
+    { path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
+    { path: 'projects', loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule) },
     { path: 'login', component: LoginComponent}
 ];
 
