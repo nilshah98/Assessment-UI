@@ -6,6 +6,8 @@
     "ng": "ng",
     "nx": "nx",
     "start": "ng serve",
+    "server:all": "concurrently \"npm run server\" \"ng serve\"",
+    "server": "json-server server/db.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
@@ -41,6 +43,7 @@
     "@angular/router": "^9.1.0",
     "@nrwl/angular": "^9.3.0",
     "core-js": "^2.5.4",
+    "json-server": "^0.16.1",
     "rxjs": "~6.5.4",
     "zone.js": "^0.10.2"
   },
