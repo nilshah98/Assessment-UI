@@ -16,6 +16,7 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProjects();
+    this.resetProject();
   }
 
   getProjects() {
@@ -31,8 +32,39 @@ export class ProjectsComponent implements OnInit {
     this.selectedProject = project;
   }
 
+  resetProject(){
+    const emptyProject : Project = {
+      id: null,
+      title: "",
+      details: "",
+      percentComplete: 0,
+      approved: false,
+    };
+    this.selectProject(emptyProject);
+  }
+
   cancel(){
-    this.selectProject(null);
+    this.resetProject();
+  }
+
+  saveProject(project){
+    project.id ? this.updateProject(project) : this.createProject(project);
+  }
+
+  createProject(project){
+    this.projectService.create(project)
+      .subscribe(_res => {
+        this.getProjects();
+        this.resetProject();
+      })
+  }
+
+  updateProject(project){
+    this.projectService.update(project)
+      .subscribe(_res => {
+        this.getProjects();
+        this.resetProject();
+      })
   }
 
 }
