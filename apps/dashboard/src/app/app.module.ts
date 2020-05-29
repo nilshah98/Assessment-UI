@@ -7,16 +7,17 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeModule } from './home/home.module';
 import { ProjectsModule } from './projects/projects.module';
+import { AppRoutingModule } from './app-routing.module';
+import { UiLoginModule } from '@workspace/ui-login';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([], { initialNavigation: 'enabled' }),
     BrowserAnimationsModule,
     MaterialModule,
-    HomeModule,
-    ProjectsModule
+    UiLoginModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
