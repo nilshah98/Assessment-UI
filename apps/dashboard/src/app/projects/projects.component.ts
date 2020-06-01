@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ProjectsService, Project } from '@workspace/core-data';
+import { Component, OnInit, Input } from '@angular/core';
+import { ProjectsService, Project, User, UserService } from '@workspace/core-data';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,18 +9,23 @@ import { Observable } from 'rxjs';
 })
 export class ProjectsComponent implements OnInit {
 
-  projects$: Observable<Project[]>;
+  currUser: User;
+  projects: Project[];
   selectedProject: Project;
 
-  constructor(private projectService: ProjectsService) { }
+  constructor(private projectService: ProjectsService, private userService: UserService) { }
 
   ngOnInit(): void {
+    this.currUser = this.userService.currUser;
     this.getProjects();
     this.resetProject();
   }
 
   getProjects() {
-    this.projects$ = this.projectService.all()
+    this.projectService.all()
+      .subscribe(res => {
+        this.projects = res;
+      })
   }
 
   deleteProject(project){
@@ -36,7 +41,8 @@ export class ProjectsComponent implements OnInit {
     const emptyProject : Project = {
       id: null,
       title: "",
-      description: ""
+      description: "",
+      user: null,
     };
     this.selectProject(emptyProject);
   }

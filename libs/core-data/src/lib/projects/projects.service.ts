@@ -20,7 +20,7 @@ export class ProjectsService {
   }
 
   update(project: Project) {
-    return this.httpClient.patch(`/api/course/${project.id}`, project);
+    return this.httpClient.put(`/api/course/${project.id}`, project);
   }
 
   delete(project: Project) {

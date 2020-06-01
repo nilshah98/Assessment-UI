@@ -7,18 +7,19 @@
       <img src="assets/logo.png" alt="Logo">
     </span>
     <span class="title">
-      <span *ngIf="name; else elseLogin">Logged In As: {{name}}
-        <button mat-raised-button color="primary" (click)="logout();$event.stopImmediatePropagation()" >Logout</button>
-      </span>
-      <ng-template #elseLogin>
-        <button mat-raised-button color="primary"><a href="http://localhost:8080/oauth2/authorization/google">Login with Google</a></button>
+      <span *ngIf="currUser; else elseDashboard">Logged In As: {{currUser.name}}</span>
+      <ng-template #elseDashboard>
+        <span>Dashboard</span>
       </ng-template>
     </span>
   </span>
   <span class="spacer"></span>
-  <button class="login" mat-mini-fab>
-    <mat-icon>person</mat-icon>
-  </button>
+  <span *ngIf="currUser; else elseLogin">
+    <button mat-raised-button (click)="logout();$event.stopImmediatePropagation()" >Logout</button>
+  </span>
+  <ng-template #elseLogin>
+    <button mat-raised-button><a href="http://localhost:8080/oauth2/authorization/google">Login with Google</a></button>
+  </ng-template>
 </mat-toolbar>
 
 <mat-sidenav-container>

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '@workspace/core-data';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { UserService, User } from '@workspace/core-data';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +8,12 @@ import { UserService } from '@workspace/core-data';
 })
 export class AppComponent implements OnInit {
   title = 'dashboard';
-  name: String;
+  currUser: User;
 
   links  = [
     {path: '/', icon: 'home', title: 'Home'},
     {path: '/projects', icon: 'work', title: 'Projects'},
-    {path: '/login', icon: 'login', title: 'Login'},
+    {path: '/questions', icon: 'question_answer', title: 'Questions'}
   ];
 
   constructor(private userService: UserService){};
@@ -21,8 +21,9 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     this.userService.getUserDetails()
       .subscribe(res => {
-        if(res.status === 200){this.name = res.body["name"]}
-      })
+        this.currUser = res;
+        this.userService.currUser = this.currUser;
+      });
   }
 
   logout(){

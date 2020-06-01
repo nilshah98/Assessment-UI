@@ -15,7 +15,6 @@ import { LoginModule } from './login/login.module';
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
-    LoginModule,
     AppRoutingModule,
   ],
   providers: [],
