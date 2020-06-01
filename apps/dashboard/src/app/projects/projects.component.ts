@@ -36,9 +36,7 @@ export class ProjectsComponent implements OnInit {
     const emptyProject : Project = {
       id: null,
       title: "",
-      details: "",
-      percentComplete: 0,
-      approved: false,
+      description: ""
     };
     this.selectProject(emptyProject);
   }

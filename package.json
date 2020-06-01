@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "nx": "nx",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "server:all": "concurrently \"npm run server\" \"ng serve\"",
     "server": "json-server server/db.json",
     "build": "ng build",

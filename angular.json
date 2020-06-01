@@ -15,7 +15,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/dashboard",
+            "outputPath": "../IdeaProjects/assessment-management/src/main/resources/public",
             "index": "apps/dashboard/src/index.html",
             "main": "apps/dashboard/src/main.ts",
             "polyfills": "apps/dashboard/src/polyfills.ts",
