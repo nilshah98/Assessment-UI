@@ -14,8 +14,9 @@ body {
 }
 
 p {
-  margin: 16px;
   overflow-wrap: break-word;
+  margin-block-start: auto;
+  margin-block-end: auto;
 }
 
 .icon-20 {
@@ -324,5 +325,21 @@ mat-toolbar {
       width: 100px;
       height: auto;
     }
+  }
+}
+
+// mat list item for multiline
+.mat-list .mat-list-item .mat-line{
+  word-wrap: break-word !important;
+  white-space: pre-wrap !important;
+  height:initial!important;
+}
+
+.listItem{
+  display: flex;
+  align-items: center;
+  &__prefix{
+    font-weight: bold;
+    margin-right: 1em;
   }
 }
