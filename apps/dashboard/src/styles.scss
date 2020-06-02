@@ -329,10 +329,26 @@ mat-toolbar {
 }
 
 // mat list item for multiline
-.mat-list .mat-list-item .mat-line{
+.mat-list .mat-list-item .mat-line, .mat-checkbox-label{
   word-wrap: break-word !important;
   white-space: pre-wrap !important;
-  height:initial!important;
+  height:initial!important; 
+}
+
+.mat-checkbox-label{
+  line-height: 1.2em !important;
+}
+
+.questionList{
+
+  &__container{
+    max-height: 100px;
+    overflow-y: auto;
+  }
+
+  &__list{
+    margin: 10px 0;
+  }
 }
 
 .listItem{

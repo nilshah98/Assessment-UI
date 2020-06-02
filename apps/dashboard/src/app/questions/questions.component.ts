@@ -10,35 +10,43 @@ import { QuestionsService } from '@workspace/core-data';
 export class QuestionsComponent implements OnInit {
 
   questions: Question[] = [];
+  filteredQuestions: Question[] = [];
   selectedQuestion: Question;
-  filter: String;
 
   constructor(private questionService: QuestionsService) { }
 
   ngOnInit(): void {
-    this.filter = "";
     this.getQuestions();
     this.resetQuestion();
   }
 
+// Retrieve all questions
   getQuestions() {
     this.questionService.all()
       .subscribe(res => {
-        console.log(res);
         this.questions = res;
+        this.filteredQuestions = res;
       })
   }
 
-  saveQuestion(question: Question){
-    // submit and save question to DB
-    console.log(question);
-    this.createQuestion(question);
+  // Post query to backend
+  // Save selected question
+  // Unlike course no edit feature here
+  // since once a question is added to quiz and then question is changed can lead to side effects
+  createQuestion(question){
+    this.questionService.create(question)
+      .subscribe(_res => {
+        this.getQuestions();
+        this.resetQuestion();
+      })
   }
 
+  // Set selected question
   selectQuestion(question: Question){
     this.selectedQuestion = question;
   }
 
+  // Reset selected question to null question
   resetQuestion(){
     const emptyQuestion : Question = {
       id: null,
@@ -49,31 +57,13 @@ export class QuestionsComponent implements OnInit {
     this.selectQuestion(emptyQuestion);
   }
 
-  cancel(){
-    this.resetQuestion();
-  }
-
+  // Add option to selected question
   addOption(){
     this.selectedQuestion.options.push({"data": ""});
   }
 
-  createQuestion(question){
-    this.questionService.create(question)
-      .subscribe(_res => {
-        this.getQuestions();
-        this.resetQuestion();
-      })
-  }
-
-  searchQuestion(query){
-    // Getting latest questions
-    this.questionService.all()
-    .subscribe(res => {
-      this.questions = res.filter(question => question.description.toLowerCase().includes(query.toLowerCase()))
-    })
-
-    this.resetQuestion();
-    // Alternatively can search in current allQuestions
-    // Need to manage 2 states then, so as to not lose earlier questions
+  searchQuestion(event){
+    let query = event.target.value;
+    this.filteredQuestions = this.questions.filter(q => q.description.toLowerCase().includes(query));
   }
 }

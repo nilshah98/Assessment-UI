@@ -7,15 +7,15 @@ import { MaterialModule } from '@workspace/material';
 import { FormsModule } from '@angular/forms';
 import { QuestionsListComponent } from './questions-list/questions-list.component';
 import { QuestionsDetailsComponent } from './questions-details/questions-details.component';
-
+import { SearchComponent } from '../search/search.component';
 
 @NgModule({
-  declarations: [QuestionsComponent, QuestionsListComponent, QuestionsDetailsComponent],
+  declarations: [QuestionsComponent, QuestionsListComponent, QuestionsDetailsComponent, SearchComponent],
   imports: [
     CommonModule,
     QuestionsRoutingModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     QuestionsComponent

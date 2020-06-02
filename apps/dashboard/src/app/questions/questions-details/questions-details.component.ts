@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Question } from '@workspace/core-data';
-import  _  from "lodash";
 
 @Component({
   selector: 'app-questions-details',

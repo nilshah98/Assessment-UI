@@ -1,8 +1,7 @@
 <div class="container">
     <div class="col-50">
       <app-questions-list
-      [questions] = "questions"
-      [filter] = "filter"
+      [questions] = "filteredQuestions"
       (selected) = "selectQuestion($event)"
       (searched) = "searchQuestion($event)">
     </app-questions-list>
@@ -11,9 +10,45 @@
     <div class="col-50">
       <app-questions-details
       [currQuestion] = "selectedQuestion"
-      (saved) = "saveQuestion($event)"
+      (saved) = "createQuestion($event)"
       (addedOption) = "addOption()"
-      (canceled) = "cancel()">
+      (canceled) = "resetQuestion()">
     </app-questions-details>
+
+    <!-- <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <h3>
+              <span *ngIf="selectedQuestion.id; else elseBlock"> {{ selectedQuestion.description }} </span>
+              <ng-template  #elseBlock> Add a question </ng-template>
+          </h3>
+        </mat-card-title>
+      </mat-card-header>
+      <form (submit)="submitForm($event)" #myForm="ngForm">
+        <mat-card-content>
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Description" type="text" name="description" required
+            [(ngModel)] = "selectedQuestion.description" [disabled]="selectedQuestion.id?true:false"
+              ></textarea>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-icon matPrefix>search</mat-icon>
+            <input matInput type="search" placeholder="search here"
+            class="search-input" (keydown)="keyPressed($event)">
+        </mat-form-field>          
+          <div class="questionList__container">
+            <section *ngFor="let question of filteredQuestions;" class="questionList__list">
+              <mat-checkbox [name]="question.id" [value]="question.id" >{{question.description}}</mat-checkbox>
+            </section>
+          </div>
+          
+        </mat-card-content>
+        <mat-card-actions>
+          <button *ngIf="!selectedQuestion.id" type="submit" mat-button color="primary" [disabled]="!myForm.form.valid">Save</button>
+          <button type="button" mat-button (click)="cancel()">Cancel</button>
+        </mat-card-actions>
+      </form>
+    </mat-card> -->
     </div>
   </div>

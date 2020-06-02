@@ -1,11 +1,6 @@
 <div>
-    <form (submit)="searched.emit(filter)">
-        <mat-form-field>
-            <mat-icon matPrefix>search</mat-icon>
-            <input matInput type="search" placeholder="search here"
-            class="search-input" name="filter" [(ngModel)]="filter">
-        </mat-form-field>
-    </form>
+
+    <app-search (keyPress)="searched.emit($event)"></app-search>
     
     <mat-card>
         <mat-card-header>
