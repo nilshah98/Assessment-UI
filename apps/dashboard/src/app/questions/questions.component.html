@@ -1,21 +1,28 @@
 <div class="container">
     <!-- PROJECTS LIST -->
     <div class="col-50">
+      <form (submit)="onSearch(filter)">
+        <mat-form-field>
+          <mat-icon matPrefix>search</mat-icon>
+          <input matInput type="search" placeholder="search here" class="search-input" 
+          name="filter" [(ngModel)]="filter">
+        </mat-form-field>
+      </form>
       <mat-card>
         <mat-card-header>
           <mat-card-title>
-            <h1>Projects</h1>
+            <h3>Questions</h3>
           </mat-card-title>
         </mat-card-header>
         <mat-card-content>
           <mat-list>
             <mat-list-item (click)="selectQuestion(question)"
                 *ngFor="let question of questions">
-              <h3 mat-line>
+              <p mat-line>
                   {{question.description}}
-              </h3>
+              </p>
                 <p *ngFor="let option of question.options; let i = index" mat-line>
-                    {{i}}. {{option.data}}
+                    {{i+1}}. {{option.data}}
                 </p>
             </mat-list-item>
           </mat-list>
@@ -36,26 +43,26 @@
         <form (submit)="saveQuestion(selectedQuestion)">
           <mat-card-content>
             <mat-form-field class="full-width">
-              <input matInput placeholder="Description" type="text" name="description"
-              [(ngModel)] = "selectedQuestion.description"
-                >
+              <textarea matInput placeholder="Description" type="text" name="description"
+              [(ngModel)] = "selectedQuestion.description" [disabled]="selectedQuestion.id?true:false"
+                ></textarea>
             </mat-form-field>
 
             <mat-form-field  *ngFor="let option of selectedQuestion.options; let index = index">
-              <input name={{index}} [(ngModel)]="option.data" matInput 
-            placeholder="Option" [value]="option.data">
+              <input name={{index}} [(ngModel)]="option.data" matInput [disabled]="selectedQuestion.id?true:false"
+            [placeholder]="'Option '+(index+1)" [value]="option.data">
             </mat-form-field>
 
             <mat-form-field>
-              <input matInput placeholder="Correct Option" type="number" name="correctOption"
+              <input matInput placeholder="Correct Option" type="number" name="correctOption" [disabled]="selectedQuestion.id?true:false"
                       [(ngModel)] = "selectedQuestion.correctOption" min="1" max={{selectedQuestion.options.length}}>
             </mat-form-field>
             
           </mat-card-content>
           <mat-card-actions>
-            <button type="submit" mat-button color="primary">Save</button>
-            <button type="button" mat-button (click)="addOption()">Add Option</button>
-            <!-- <button type="button" mat-button (click)="cancel()">Cancel</button> -->
+            <button *ngIf="!selectedQuestion.id" type="submit" mat-button color="primary">Save</button>
+            <button *ngIf="!selectedQuestion.id" type="button" mat-button (click)="addOption()">Add Option</button>
+            <button type="button" mat-button (click)="cancel()">Cancel</button>
           </mat-card-actions>
         </form>
       </mat-card>

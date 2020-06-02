@@ -15,6 +15,7 @@ body {
 
 p {
   margin: 16px;
+  overflow-wrap: break-word;
 }
 
 .icon-20 {
@@ -34,7 +35,8 @@ p {
 
 .container [class*='col'] {
   padding: 10px;
-  flex: 1;
+  flex:1;
+  max-width: 50%;
 }
 
 .mat-card-header-text {
