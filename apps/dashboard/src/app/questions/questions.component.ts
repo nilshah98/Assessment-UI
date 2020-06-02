@@ -16,6 +16,7 @@ export class QuestionsComponent implements OnInit {
   constructor(private questionService: QuestionsService) { }
 
   ngOnInit(): void {
+    this.filter = "";
     this.getQuestions();
     this.resetQuestion();
   }
@@ -43,7 +44,7 @@ export class QuestionsComponent implements OnInit {
       id: null,
       description: "",
       options: [{"data": ""}],
-      correctOption: 0
+      correctOption: 1
     };
     this.selectQuestion(emptyQuestion);
   }
@@ -64,30 +65,15 @@ export class QuestionsComponent implements OnInit {
       })
   }
 
-  onSearch(query){
-    console.log("HIT")
-
+  searchQuestion(query){
+    // Getting latest questions
     this.questionService.all()
     .subscribe(res => {
-      console.log(res);
-
-      // Filtering
-      this.questions = res.filter(question => {
-        // Searching in description
-        if(question.description.includes(query)){
-          return true
-        }else{
-          // Searching in options
-          let flag = false
-          for(let j=0; j<question.options.length; j++){
-            if(question.options[j].data.includes(query)){
-              flag = true;
-              break;
-            }
-          }
-          return flag;
-        }
-      })
+      this.questions = res.filter(question => question.description.toLowerCase().includes(query.toLowerCase()))
     })
+
+    this.resetQuestion();
+    // Alternatively can search in current allQuestions
+    // Need to manage 2 states then, so as to not lose earlier questions
   }
 }
