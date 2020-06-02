@@ -63,7 +63,7 @@ export class QuestionsComponent implements OnInit {
   }
 
   searchQuestion(event){
-    let query = event.target.value;
+    let query = event.target.value.toLowerCase();
     this.filteredQuestions = this.questions.filter(q => q.description.toLowerCase().includes(query));
   }
 }

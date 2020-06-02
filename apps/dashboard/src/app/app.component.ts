@@ -13,7 +13,8 @@ export class AppComponent implements OnInit {
   links  = [
     {path: '/', icon: 'home', title: 'Home'},
     {path: '/projects', icon: 'work', title: 'Projects'},
-    {path: '/questions', icon: 'question_answer', title: 'Questions'}
+    {path: '/questions', icon: 'help', title: 'Questions'},
+    {path: '/quiz', icon: 'question_answer', title: 'Quiz'}
   ];
 
   constructor(private userService: UserService){};

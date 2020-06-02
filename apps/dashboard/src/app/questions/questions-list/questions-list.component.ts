@@ -8,7 +8,6 @@ import { Question } from "@workspace/core-data";
 })
 export class QuestionsListComponent{
   @Input() questions: Question[] = [];
-  @Input() filter: String = "";
   @Output() selected= new EventEmitter();
   @Output() searched= new EventEmitter();
 }

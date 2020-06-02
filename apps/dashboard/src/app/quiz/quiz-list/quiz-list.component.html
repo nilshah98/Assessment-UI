@@ -1,0 +1,30 @@
+<div>
+
+    <app-search (keyPress)="searched.emit($event)"></app-search>
+    
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                <h3>Quizes</h3>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item (click)="selected.emit(quiz)"
+                *ngFor="let quiz of quizes; let i = index">
+                    <h3 mat-line>
+                        {{quiz.title}}
+                    </h3>
+                    <p mat-line>
+                        {{quiz.description}}
+                    </p>
+                    <p mat-line>
+                        {{quiz.questions.length}} Questions
+                    </p>
+                
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+</mat-card>
+</div>
