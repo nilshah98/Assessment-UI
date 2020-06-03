@@ -9,5 +9,7 @@ import { Quiz } from '@workspace/core-data';
 export class QuizListComponent {
   @Input() quizes: Array<Quiz>;
   @Output() selected = new EventEmitter();
-  @Output() searched= new EventEmitter();
+  @Output() searched = new EventEmitter();
+  @Output() takeExam = new EventEmitter();
+  @Output() checkResult = new EventEmitter();
 }

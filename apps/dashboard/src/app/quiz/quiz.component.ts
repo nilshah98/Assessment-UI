@@ -56,7 +56,7 @@ export class QuizComponent implements OnInit {
   }
 
   searchQuiz(event){
-    let query = event.target.value.toLowerCase();
+    const query = event.target.value.toLowerCase();
     
     this.filteredQuiz = this.allQuizes.filter(q => {
       if(q.title.toLowerCase().includes(query)) return true;
@@ -67,7 +67,7 @@ export class QuizComponent implements OnInit {
 
   submitQuiz(quiz){
     // create quiz here
-    let newQuiz: Quiz = {
+    const newQuiz: Quiz = {
       id: this.selectedQuiz.id,
       title: quiz.target[0].value,
       description: quiz.target[1].value,
@@ -83,7 +83,7 @@ export class QuizComponent implements OnInit {
   }
 
   createQuestion(id){
-    let ques: Question = {
+    const ques: Question = {
       id: id,
       options: null,
       correctOption: null,

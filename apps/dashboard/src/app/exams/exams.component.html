@@ -2,13 +2,16 @@
     <div class="col-50">
         <app-quiz-list
         [quizes]="filteredQuiz"
-        (selected)="selectQuiz($event)"
+        (searched)="searchQuiz($event)"
+        (checkResult)="checkResult($event)"
+        (takeExam)="takeExam($event)"
         ></app-quiz-list>
     </div>
     <div class="col-50">
         
         <app-exams-results *ngIf="result; else examBlock"
-        [result]="result">
+        [result]="result"
+        [quiz]="selectedQuiz">
         </app-exams-results>
 
         <ng-template #examBlock>

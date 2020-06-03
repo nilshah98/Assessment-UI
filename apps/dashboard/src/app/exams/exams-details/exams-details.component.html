@@ -2,10 +2,13 @@
     <div *ngIf="exam; else selectBlock">
         <mat-card-header>
             <mat-card-title>
-                <h3>{{exam.title}}</h3>
+                {{exam.title}}
             </mat-card-title>
+            <mat-card-subtitle>
+                {{exam.description}}
+            </mat-card-subtitle>
         </mat-card-header>
-        <form (submit)="evaluate.emit(exam)" #examForm="ngForm">
+        <form *ngIf="exam.questions" (submit)="evaluate.emit(exam)" #examForm="ngForm">
             <mat-card-content>
                 <section *ngFor="let question of exam.questions">
                     <label id="example-radio-group-label">{{question.description}}</label>
@@ -13,15 +16,12 @@
                     [name]="question.id" required
                     aria-labelledby="example-radio-group-label"
                     class="example-radio-group"
-                    [(ngModel)]="question.response">
+                    [(ngModel)]="question.correctOption">
                     <mat-radio-button class="example-radio-button" *ngFor="let option of question.options; let i = index"
                     [value]="i">
-                    {{option}}
+                    {{option["data"]}}
                 </mat-radio-button>
             </mat-radio-group>
-            <div>
-                Your answer is: {{question.options[question.response]}}
-            </div>
             <mat-divider></mat-divider>
         </section>
     </mat-card-content>
@@ -33,7 +33,7 @@
 <ng-template #selectBlock>
     <mat-card-header>
         <mat-card-title>
-            <h3>Select a quiz</h3>
+            <h3>Select an Action</h3>
         </mat-card-title>
     </mat-card-header>
 </ng-template>

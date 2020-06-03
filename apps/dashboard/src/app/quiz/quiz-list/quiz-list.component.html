@@ -22,7 +22,18 @@
                     <p mat-line>
                         {{quiz.questions.length}} Questions
                     </p>
-                
+                    <mat-card-actions mat-line *ngIf="quizes" style="margin: 10px 0;">
+                        <button  *ngIf="!quiz.questions[0].correctOption"  
+                        type="button" mat-stroked-button color="warn"
+                        (click)="checkResult.emit(quiz)"
+                        >Check Result</button>
+
+                        <button  *ngIf="!quiz.questions[0].correctOption"  
+                        type="button" mat-stroked-button color="primary"
+                        (click)="takeExam.emit(quiz)"
+                        >Take Exam</button>
+
+                    </mat-card-actions>
             </mat-list-item>
         </mat-list>
     </mat-card-content>

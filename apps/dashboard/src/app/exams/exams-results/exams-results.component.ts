@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Result } from '@workspace/core-data';
+import { Quiz, Result } from '@workspace/core-data';
 
 @Component({
   selector: 'app-exams-results',
@@ -7,6 +7,8 @@ import { Result } from '@workspace/core-data';
   styleUrls: ['./exams-results.component.css']
 })
 export class ExamsResultsComponent implements OnInit {
+
+  resultExists: Boolean = false;
 
   res: any = {
     labels: ['correct','incorrect'],
@@ -23,6 +25,8 @@ export class ExamsResultsComponent implements OnInit {
             ]
         }]    
     };
+  
+  @Input() quiz: Quiz;
 
   constructor() { }
 
@@ -30,22 +34,28 @@ export class ExamsResultsComponent implements OnInit {
   }
 
   @Input() set result(value){
-    let changedData = {
-      labels: ['correct', 'incorrect'],
-      datasets: [
-          {
-              data: [value.score, value.total - value.score],
-              backgroundColor: [
-                  "#79ff4d",
-                  "#ff4d4d",
-              ],
-              hoverBackgroundColor: [
-                  "#79ff4d",
-                  "#ff4d4d",
-              ]
-           }]
-      }
-    this.res = Object.assign({}, changedData);
+    if(value.score >= 0){
+      this.resultExists = true;
+      const changedData = {
+        labels: ['correct', 'incorrect'],
+        datasets: [
+            {
+                data: [value.score, value.total - value.score],
+                backgroundColor: [
+                    "#79ff4d",
+                    "#ff4d4d",
+                ],
+                hoverBackgroundColor: [
+                    "#79ff4d",
+                    "#ff4d4d",
+                ]
+             }]
+        }
+      this.res = Object.assign({}, changedData);
+    }
+    else{
+      this.resultExists = false;
+    }
   }
 
 }

@@ -33,7 +33,7 @@
           
         </mat-card-content>
         <mat-card-actions>
-          <button *ngIf="!currQuiz.id" type="submit" mat-button color="primary">Save</button>
+          <button *ngIf="!currQuiz.id" type="submit" mat-button color="primary" [disabled]="!myForm.form.valid" >Save</button>
           <button type="button" mat-button (click)="canceled.emit()">Cancel</button>
         </mat-card-actions>
       </form>

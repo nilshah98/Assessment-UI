@@ -1,11 +1,8 @@
+import { Question } from '../questions/question';
+
 export interface Exam {
     id: String;
     title: String;
     description: String;
-    questions: Array<{
-        "id": "",
-        "description": "",
-        "options": String[],
-        "response": Number
-    }>;
+    questions: Array<Question>;
 }
