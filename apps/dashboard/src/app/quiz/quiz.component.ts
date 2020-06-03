@@ -11,6 +11,8 @@ export class QuizComponent implements OnInit {
   allQuizes: Array<Quiz>;
   filteredQuiz: Array<Quiz>;
   selectedQuiz: Quiz;
+
+  // Independent list of questions to pick from, to add to quiz
   allQuestions: Array<Question>
 
   constructor(private quizesService: QuizesService,
@@ -32,14 +34,12 @@ export class QuizComponent implements OnInit {
   }
 
   createQuiz(quiz){
-    console.log(quiz, "quiz main component");
     this.quizesService.create(quiz)
       .subscribe(_res => {
         this.getAllQuizes();
         this.resetQuiz();
       })
   }
-
 
   selectQuiz(quiz){
     this.selectedQuiz = quiz;
@@ -55,6 +55,7 @@ export class QuizComponent implements OnInit {
     this.selectQuiz(emptyQuiz);
   }
 
+  // Searching in title and description
   searchQuiz(event){
     const query = event.target.value.toLowerCase();
     
@@ -65,6 +66,8 @@ export class QuizComponent implements OnInit {
     });
   }
 
+  // Custom function to generate quiz
+  // Can't use ngModel here, since using custom model, which is dynamic
   submitQuiz(quiz){
     // create quiz here
     const newQuiz: Quiz = {
@@ -82,6 +85,7 @@ export class QuizComponent implements OnInit {
     this.createQuiz(newQuiz);
   }
 
+  // Helper function to generate question for submiting quiz
   createQuestion(id){
     const ques: Question = {
       id: id,

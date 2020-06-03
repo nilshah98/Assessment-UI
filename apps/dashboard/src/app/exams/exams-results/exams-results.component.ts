@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Quiz, Result } from '@workspace/core-data';
+import { Quiz } from '@workspace/core-data';
 
 @Component({
   selector: 'app-exams-results',
@@ -26,6 +26,7 @@ export class ExamsResultsComponent implements OnInit {
         }]    
     };
   
+  // Details of current quiz to output to view
   @Input() quiz: Quiz;
 
   constructor() { }
@@ -33,6 +34,7 @@ export class ExamsResultsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // Using results to set data for displaying on chart
   @Input() set result(value){
     if(value.score >= 0){
       this.resultExists = true;
@@ -51,6 +53,8 @@ export class ExamsResultsComponent implements OnInit {
                 ]
              }]
         }
+
+        // Kludge to refresh chart everytime
       this.res = Object.assign({}, changedData);
     }
     else{

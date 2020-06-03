@@ -4,10 +4,11 @@
     
 
     <mat-card>
-        <mat-card-header>
-            <mat-card-title>
-                <h3>Quizes</h3>
-            </mat-card-title>
+        <mat-card-header *ngIf="quizes">
+            <h3 *ngIf="quizes[0].questions[0].correctOption; else examHeading">Quizes</h3>
+            <ng-template #examHeading>
+                <h3>Exams</h3>
+            </ng-template>
         </mat-card-header>
         <mat-card-content>
             <mat-list>

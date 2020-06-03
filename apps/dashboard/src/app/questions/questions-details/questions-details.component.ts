@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Question } from '@workspace/core-data';
 
 @Component({
@@ -15,9 +15,6 @@ export class QuestionsDetailsComponent{
   @Output() addedOption = new EventEmitter();
   @Output() canceled = new EventEmitter();
   @Input() currQuestion: Question;
-
-  // To know which quiz to addTo
-  @Input() QuizId: String;
 
   /*
     // If want to decouple the states =>

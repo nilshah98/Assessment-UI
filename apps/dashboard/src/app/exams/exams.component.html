@@ -1,7 +1,7 @@
 <div class="container">
     <div class="col-50">
         <app-quiz-list
-        [quizes]="filteredQuiz"
+        [quizes]="filteredExam"
         (searched)="searchQuiz($event)"
         (checkResult)="checkResult($event)"
         (takeExam)="takeExam($event)"
@@ -11,7 +11,7 @@
         
         <app-exams-results *ngIf="result; else examBlock"
         [result]="result"
-        [quiz]="selectedQuiz">
+        [quiz]="selectedExam">
         </app-exams-results>
 
         <ng-template #examBlock>

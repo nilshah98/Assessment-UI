@@ -62,8 +62,10 @@ export class QuestionsComponent implements OnInit {
     this.selectedQuestion.options.push({"data": ""});
   }
 
+  // Filter questions through their description
+  // Can add custom filtering on based of key events as well here
   searchQuestion(event){
-    let query = event.target.value.toLowerCase();
+    const query = event.target.value.toLowerCase();
     this.filteredQuestions = this.questions.filter(q => q.description.toLowerCase().includes(query));
   }
 }

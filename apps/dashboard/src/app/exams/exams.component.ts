@@ -8,9 +8,9 @@ import { Quiz, QuizesService, User, UserService, ExamsService, Exam, Result } fr
 })
 export class ExamsComponent implements OnInit {
 
-  allQuizes: Array<Quiz>;
-  filteredQuiz: Array<Quiz>;
-  selectedQuiz: Quiz;
+  allExams: Array<Exam>;
+  filteredExam: Array<Exam>;
+  selectedExam: Exam;
   currUser: User;
   exam: Exam = null;
   result: Result = null;
@@ -26,13 +26,13 @@ export class ExamsComponent implements OnInit {
   getAllExams() {
     this.examsService.getAllExams()
       .subscribe(res => {
-        this.allQuizes = res;
-        this.filteredQuiz = res;
+        this.allExams = res;
+        this.filteredExam = res;
       })
   }
 
   takeExam(quiz) {
-    this.selectedQuiz = quiz;
+    this.selectedExam = quiz;
     this.examsService.getExam(quiz.id)
       .subscribe(res => {
         this.result = null;
@@ -41,7 +41,7 @@ export class ExamsComponent implements OnInit {
   }
 
   checkResult(quiz){
-    this.selectedQuiz = quiz;
+    this.selectedExam = quiz;
     this.examsService.getResult(quiz.id)
       .subscribe(res => {
         this.result = res;
@@ -57,11 +57,11 @@ export class ExamsComponent implements OnInit {
   searchQuiz(event){
     const query = event.target.value.toLowerCase();
     
-    this.filteredQuiz = this.allQuizes.filter(q => {
+    this.filteredExam = this.allExams.filter(q => {
       if(q.title.toLowerCase().includes(query)) return true;
       else if(q.description.toLowerCase().includes(query)) return true;
       return false;
     });
   }
-
+  
 }
