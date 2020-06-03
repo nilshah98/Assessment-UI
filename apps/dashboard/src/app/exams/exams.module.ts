@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { QuizModule } from '../quiz/quiz.module';
 import { ExamsDetailsComponent } from './exams-details/exams-details.component';
 import { ExamsResultsComponent } from './exams-results/exams-results.component';
+import { ChartModule } from 'primeng/chart';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ExamsResultsComponent } from './exams-results/exams-results.component';
     ExamsRoutingModule,
     MaterialModule,
     FormsModule,
-    QuizModule
+    QuizModule,
+    ChartModule
   ]
 })
 export class ExamsModule { }

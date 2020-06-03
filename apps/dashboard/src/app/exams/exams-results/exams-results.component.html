@@ -1,1 +1,10 @@
-<pre>{{result | json}}</pre>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h3>Exam Results</h3>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p-chart type="doughnut" [data]="res"></p-chart>
+    </mat-card-content>
+</mat-card>
