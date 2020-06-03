@@ -5,36 +5,34 @@
 
     <mat-card>
         <mat-card-header *ngIf="quizes">
-            <h3 *ngIf="quizes[0].questions[0].correctOption; else examHeading">Quizes</h3>
-            <ng-template #examHeading>
-                <h3>Exams</h3>
-            </ng-template>
+            <mat-card-title>
+                <h3 *ngIf="quizes[0].questions[0].correctOption; else examHeading">Quizes</h3>
+                <ng-template #examHeading>
+                    <h3>Exams</h3>
+                </ng-template>
+            </mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <mat-list>
                 <mat-list-item (click)="selected.emit(quiz)"
                 *ngFor="let quiz of quizes; let i = index">
-                    <h3 mat-line>
-                        {{quiz.title}}
-                    </h3>
-                    <p mat-line>
-                        {{quiz.description}}
-                    </p>
-                    <p mat-line>
-                        {{quiz.questions.length}} Questions
-                    </p>
-                    <mat-card-actions mat-line *ngIf="quizes" style="margin: 10px 0;">
-                        <button  *ngIf="!quiz.questions[0].correctOption"  
-                        type="button" mat-stroked-button color="warn"
+                <div class="listItem" >
+                    <span class="listItem__prefix">{{i+1}}. </span>
+                    <div mat-line class="listItem__main">
+                        <h3>{{quiz.title}}</h3>
+                        <p>{{quiz.description}}</p>
+                        <p>{{quiz.questions.length}} Questions</p>
+                    </div>
+                    <mat-card-actions mat-line *ngIf="!quiz.questions[0].correctOption" >
+                        <button type="button" mat-stroked-button color="warn"
                         (click)="checkResult.emit(quiz)"
                         >Check Result</button>
-
-                        <button  *ngIf="!quiz.questions[0].correctOption"  
-                        type="button" mat-stroked-button color="primary"
+                        <br>
+                        <button type="button" mat-stroked-button color="primary"
                         (click)="takeExam.emit(quiz)"
                         >Take Exam</button>
-
                     </mat-card-actions>
+                </div>
             </mat-list-item>
         </mat-list>
     </mat-card-content>
