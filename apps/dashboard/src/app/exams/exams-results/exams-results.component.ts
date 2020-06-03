@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Result } from '@workspace/core-data';
 
 @Component({
   selector: 'app-exams-results',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./exams-results.component.css']
 })
 export class ExamsResultsComponent implements OnInit {
+
+  @Input() result: Result;
 
   constructor() { }
 

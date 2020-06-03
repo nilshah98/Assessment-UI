@@ -6,13 +6,17 @@
         ></app-quiz-list>
     </div>
     <div class="col-50">
-        <app-exams-results *ngIf="result; else examBlock">
-
+        
+        <app-exams-results *ngIf="result; else examBlock"
+        [result]="result">
         </app-exams-results>
-        <ng-template #examBlock>
-            <app-exams-details [exam]="exam">
 
+        <ng-template #examBlock>
+        
+            <app-exams-details [exam]="exam"
+            (evaluate)="evaluate($event)">
             </app-exams-details>
+        
         </ng-template>
     </div>
 </div>

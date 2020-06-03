@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Exam } from '@workspace/core-data';
 
 @Component({
@@ -9,13 +9,11 @@ import { Exam } from '@workspace/core-data';
 export class ExamsDetailsComponent implements OnInit {
 
   @Input() exam: Exam;
+  @Output() evaluate = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  evaluate(exam){
-    console.log(exam);
   }
 
 }
