@@ -6,6 +6,13 @@
         ></app-quiz-list>
     </div>
     <div class="col-50">
-        <pre>{{ result?result:exam | json }}</pre>
+        <app-exams-results *ngIf="result; else examBlock">
+
+        </app-exams-results>
+        <ng-template #examBlock>
+            <app-exams-details [exam]="exam">
+
+            </app-exams-details>
+        </ng-template>
     </div>
 </div>

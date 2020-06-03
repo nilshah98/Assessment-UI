@@ -5,6 +5,7 @@ export interface Exam {
     questions: Array<{
         "id": "",
         "description": "",
-        "options": Array<{"data": ""}>
+        "options": String[],
+        "response": Number
     }>;
 }
