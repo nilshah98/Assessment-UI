@@ -18,6 +18,9 @@ import { SearchModule } from '../search/search.module';
     MaterialModule,
     FormsModule,
     SearchModule
+  ],
+  exports: [
+    QuizListComponent
   ]
 })
 export class QuizModule { }

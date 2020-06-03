@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="col-50">
+        <app-quiz-list
+        [quizes]="filteredQuiz"
+        (selected)="selectQuiz($event)"
+        ></app-quiz-list>
+    </div>
+    <div class="col-50">
+        <pre>{{ result?result:exam | json }}</pre>
+    </div>
+</div>

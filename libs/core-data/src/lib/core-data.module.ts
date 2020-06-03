@@ -4,6 +4,7 @@ import {ProjectsService} from './projects/projects.service'
 import { UserService } from './user/user.service';
 import { QuestionsService } from './questions/questions.service';
 import { QuizesService } from './quizes/quizes.service';
+import { ExamsService } from './exams/exams.service';
 
 @NgModule({
   imports: [CommonModule],
@@ -11,7 +12,8 @@ import { QuizesService } from './quizes/quizes.service';
     ProjectsService,
     UserService,
     QuestionsService,
-    QuizesService
+    QuizesService,
+    ExamsService
   ],
 })
 export class CoreDataModule {}

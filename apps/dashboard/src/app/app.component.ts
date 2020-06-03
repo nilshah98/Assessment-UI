@@ -14,7 +14,8 @@ export class AppComponent implements OnInit {
     {path: '/', icon: 'home', title: 'Home'},
     {path: '/projects', icon: 'work', title: 'Projects'},
     {path: '/questions', icon: 'help', title: 'Questions'},
-    {path: '/quiz', icon: 'question_answer', title: 'Quiz'}
+    {path: '/quiz', icon: 'dashboard', title: 'Quiz'},
+    {path: '/exam', icon: 'question_answer', title: 'Exam'}
   ];
 
   constructor(private userService: UserService){};
