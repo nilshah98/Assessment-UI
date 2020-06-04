@@ -7,6 +7,7 @@ import { MaterialModule } from '@workspace/material';
 import { FormsModule } from '@angular/forms';
 import { ProjectsListComponent } from './projects-list/projects-list.component';
 import { ProjectsDetailsComponent } from './projects-details/projects-details.component';
+import { SearchModule } from '../search/search.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ProjectsDetailsComponent } from './projects-details/projects-details.co
     CommonModule,
     ProjectsRoutingModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    SearchModule
   ],
   exports: [
     ProjectsComponent

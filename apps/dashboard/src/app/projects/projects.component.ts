@@ -11,6 +11,7 @@ export class ProjectsComponent implements OnInit {
 
   currUser: User;
   projects: Project[];
+  filteredProjects: Project[];
   selectedProject: Project;
 
   constructor(private projectService: ProjectsService, private userService: UserService) { }
@@ -25,6 +26,7 @@ export class ProjectsComponent implements OnInit {
     this.projectService.all()
       .subscribe(res => {
         this.projects = res;
+        this.filteredProjects = res;
       })
   }
 
@@ -69,6 +71,13 @@ export class ProjectsComponent implements OnInit {
         this.getProjects();
         this.resetProject();
       })
+  }
+
+  // Filter projects through their description or title
+  // Can add custom filtering on based of key events as well here
+  searchedProject(event){
+    const query = event.target.value.toLowerCase();
+    this.filteredProjects = this.projects.filter(q => q.title.toLowerCase().includes(query) || q.description.toLowerCase().includes(query));
   }
 
 }

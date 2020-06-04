@@ -1,1 +1,26 @@
-<p>projects-list works!</p>
+<mat-card>
+
+    <app-search (keyPress)="searched.emit($event)"></app-search>
+
+    <mat-card-header>
+      <mat-card-title>
+        <h1>Projects</h1>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item (click)="selected.emit(project)"
+            *ngFor="let project of projects">
+          <h3 mat-line>
+              {{project.title}}
+          </h3>
+          <p mat-line>
+              {{project.description}}
+          </p>
+          <button *ngIf="project.user.id === currUser.id" mat-icon-button (click)="deleted.emit(project);$event.stopImmediatePropagation()">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
