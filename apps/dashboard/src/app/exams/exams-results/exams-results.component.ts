@@ -9,6 +9,8 @@ import { Quiz } from '@workspace/core-data';
 export class ExamsResultsComponent implements OnInit {
 
   resultExists: Boolean = false;
+  
+  @Input() percentile: Number;
 
   res: any = {
     labels: ['correct','incorrect'],

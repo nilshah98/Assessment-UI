@@ -14,6 +14,7 @@ export class ExamsComponent implements OnInit {
   currUser: User;
   exam: Exam = null;
   result: Result = null;
+  percentile: Number = 0;
 
   constructor(private userService: UserService,
     private examsService: ExamsService) { }
@@ -36,6 +37,7 @@ export class ExamsComponent implements OnInit {
     this.examsService.getExam(quiz.id)
       .subscribe(res => {
         this.result = null;
+        this.percentile = 0;
         this.exam = res;
       })
   }
@@ -46,6 +48,10 @@ export class ExamsComponent implements OnInit {
       .subscribe(res => {
         this.result = res;
         this.exam = null;
+      })
+    this.examsService.getPercentile(quiz.id)
+      .subscribe(res => {
+        this.percentile = res;
       })
   }
 

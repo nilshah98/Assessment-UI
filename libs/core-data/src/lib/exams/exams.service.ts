@@ -28,4 +28,8 @@ export class ExamsService {
     return this.httpClient.get<Result>(`/api/exam/result/${quizId}`);
   }
 
+  getPercentile(quizId): Observable<Number> {
+    return this.httpClient.get<Number>(`/api/exam/percentile/${quizId}`);
+  }
+
 }
