@@ -11,10 +11,10 @@ export class QuestionsService {
   constructor(private httpClient: HttpClient) { }
 
   all(): Observable<Question[]> {
-    return this.httpClient.get<Question[]>("/test/api/questions");
+    return this.httpClient.get<Question[]>("/api/questions");
   }
 
   create(question: Question){
-    return this.httpClient.post("/test/api/question", question);
+    return this.httpClient.post("/api/question", question);
   }  
 }

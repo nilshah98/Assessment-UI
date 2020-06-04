@@ -11,10 +11,10 @@ export class QuizesService {
   constructor(private httpClient: HttpClient) { }
 
   all(): Observable<Quiz[]> {
-    return this.httpClient.get<Quiz[]>("/test/api/quizes");
+    return this.httpClient.get<Quiz[]>("/api/quizes");
   }
 
   create(quiz: Quiz) {
-    return this.httpClient.post("/test/api/quiz", quiz);
+    return this.httpClient.post("/api/quiz", quiz);
   }
 }
