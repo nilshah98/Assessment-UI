@@ -392,3 +392,26 @@ mat-toolbar {
   min-height: 48px;
   height: auto !important;
 }
+
+mat-grid-tile{
+  background: white;
+}
+
+.home{
+  &__image{
+    width: 50%;
+    height: 50%;
+
+    &--exams{
+      background: url('assets/exams.png');  
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    &--users{
+      background: url('assets/users.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+}
