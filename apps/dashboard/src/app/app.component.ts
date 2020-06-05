@@ -10,13 +10,7 @@ export class AppComponent implements OnInit {
   title = 'dashboard';
   currUser: User;
 
-  links  = [
-    {path: '/', icon: 'home', title: 'Home'},
-    {path: '/projects', icon: 'work', title: 'Projects'},
-    {path: '/questions', icon: 'help', title: 'Questions'},
-    {path: '/quiz', icon: 'dashboard', title: 'Quiz'},
-    {path: '/exam', icon: 'question_answer', title: 'Exam'}
-  ];
+  links  = [{path: '/', icon: 'home', title: 'Home'}];
 
   constructor(private userService: UserService){};
 
@@ -25,6 +19,10 @@ export class AppComponent implements OnInit {
       .subscribe(res => {
         this.currUser = res;
         this.userService.currUser = this.currUser;
+        this.links.push({path: '/projects', icon: 'work', title: 'Projects'});
+        this.links.push({path: '/questions', icon: 'help', title: 'Questions'});
+        this.links.push({path: '/quiz', icon: 'dashboard', title: 'Quiz'});
+        this.links.push({path: '/exam', icon: 'question_answer', title: 'Exam'});
       });
   }
 

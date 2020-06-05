@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchModule } from './search/search.module';
+import { AuthGuard } from './auth.guard';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -17,7 +18,7 @@ import { SearchModule } from './search/search.module';
     AppRoutingModule,
     SearchModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
