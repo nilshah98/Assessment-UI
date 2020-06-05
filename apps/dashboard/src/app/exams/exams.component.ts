@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Quiz, QuizesService, User, UserService, ExamsService, Exam, Result } from '@workspace/core-data';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-exams',
@@ -17,7 +18,8 @@ export class ExamsComponent implements OnInit {
   percentile: Number = 0;
 
   constructor(private userService: UserService,
-    private examsService: ExamsService) { }
+    private examsService: ExamsService,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.currUser = this.userService.currUser;
@@ -39,6 +41,9 @@ export class ExamsComponent implements OnInit {
         this.result = null;
         this.percentile = 0;
         this.exam = res;
+        if(res.id == "-1"){
+          this._snackBar.open("Can take test only once", null, {duration: 2500});
+        }
       })
   }
 
@@ -48,6 +53,9 @@ export class ExamsComponent implements OnInit {
       .subscribe(res => {
         this.result = res;
         this.exam = null;
+        if(res.score === -1){
+          this._snackBar.open("Submit Exam First", null, {duration: 2500});
+        }
       })
     this.examsService.getPercentile(quiz.id)
       .subscribe(res => {
@@ -61,6 +69,7 @@ export class ExamsComponent implements OnInit {
         console.log(res)
         this.exam = null;
         this.result = null;
+        this._snackBar.open("Exam Submitted. Check Results!", null, {duration: 2500});
       })
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Quiz, QuizesService, Question, QuestionsService } from '@workspace/core-data';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-quiz',
@@ -16,7 +17,8 @@ export class QuizComponent implements OnInit {
   allQuestions: Array<Question>
 
   constructor(private quizesService: QuizesService,
-    private questionService: QuestionsService) { }
+    private questionService: QuestionsService,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getAllQuizes()
@@ -38,6 +40,7 @@ export class QuizComponent implements OnInit {
       .subscribe(_res => {
         this.getAllQuizes();
         this.resetQuiz();
+        this._snackBar.open("Quiz Created", null, {duration: 2500});
       })
   }
 

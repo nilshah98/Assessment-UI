@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProjectsService, Project, User, UserService } from '@workspace/core-data';
 import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-projects',
@@ -14,7 +15,7 @@ export class ProjectsComponent implements OnInit {
   filteredProjects: Project[];
   selectedProject: Project;
 
-  constructor(private projectService: ProjectsService, private userService: UserService) { }
+  constructor(private projectService: ProjectsService, private userService: UserService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.currUser = this.userService.currUser;
@@ -32,7 +33,11 @@ export class ProjectsComponent implements OnInit {
 
   deleteProject(project){
     this.projectService.delete(project)
-      .subscribe(_res => this.getProjects());
+      .subscribe(_res => {
+        this.resetProject();
+        this.getProjects();
+        this._snackBar.open("Course Deleted", null, {duration: 2500});
+      });
   }
 
   selectProject(project){
@@ -62,12 +67,14 @@ export class ProjectsComponent implements OnInit {
       .subscribe(_res => {
         this.getProjects();
         this.resetProject();
+        this._snackBar.open("Course Created", null, {duration: 2500});
       })
   }
 
   updateProject(project){
     this.projectService.update(project)
       .subscribe(_res => {
+        this._snackBar.open("Course Updated", null, {duration: 2500});
         this.getProjects();
         this.resetProject();
       })

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Question } from "@workspace/core-data";
 import { QuestionsService } from '@workspace/core-data';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-questions',
@@ -13,7 +14,7 @@ export class QuestionsComponent implements OnInit {
   filteredQuestions: Question[] = [];
   selectedQuestion: Question;
 
-  constructor(private questionService: QuestionsService) { }
+  constructor(private questionService: QuestionsService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getQuestions();
@@ -38,6 +39,7 @@ export class QuestionsComponent implements OnInit {
       .subscribe(_res => {
         this.getQuestions();
         this.resetQuestion();
+        this._snackBar.open("Question Created", null, {duration: 2500});
       })
   }
 
