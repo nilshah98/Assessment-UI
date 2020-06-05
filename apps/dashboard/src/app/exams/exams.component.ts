@@ -57,7 +57,11 @@ export class ExamsComponent implements OnInit {
 
   evaluate(exam: Exam){
     this.examsService.evalExam(exam.id, exam)
-      .subscribe(res => console.log(res))
+      .subscribe(res => {
+        console.log(res)
+        this.exam = null;
+        this.result = null;
+      })
   }
 
   searchQuiz(event){

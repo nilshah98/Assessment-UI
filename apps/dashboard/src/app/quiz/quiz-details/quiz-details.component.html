@@ -7,7 +7,7 @@
           </h3>
         </mat-card-title>
       </mat-card-header>
-      <form #myForm="ngForm" (submit)="saved.emit($event)">
+      <form #quizForm="ngForm" (submit)="saved.emit($event)">
         <mat-card-content>
             <mat-form-field class="full-width">
                 <input matInput placeholder="Title" type="text" name="title" required
@@ -33,7 +33,7 @@
           
         </mat-card-content>
         <mat-card-actions>
-          <button *ngIf="!currQuiz.id" type="submit" mat-button color="primary" [disabled]="!myForm.form.valid" >Save</button>
+          <button *ngIf="!currQuiz.id" type="submit" mat-button color="primary" [disabled]="!quizForm.form.valid" >Save</button>
           <button type="button" mat-button (click)="canceled.emit()">Cancel</button>
         </mat-card-actions>
       </form>

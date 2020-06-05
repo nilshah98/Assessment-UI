@@ -7,7 +7,7 @@
         </h3>
       </mat-card-title>
     </mat-card-header>
-    <form (submit)="saved.emit(currQuestion)" #myForm="ngForm">
+    <form (submit)="saved.emit(currQuestion)" #questionForm="ngForm">
       <mat-card-content>
         <mat-form-field class="full-width">
           <textarea matInput placeholder="Description" type="text" name="description" required
@@ -27,7 +27,7 @@
         
       </mat-card-content>
       <mat-card-actions>
-        <button *ngIf="!currQuestion.id" type="submit" mat-button color="primary" [disabled]="!myForm.form.valid">Save</button>
+        <button *ngIf="!currQuestion.id" type="submit" mat-button color="primary" [disabled]="!questionForm.form.valid">Save</button>
         <button *ngIf="!currQuestion.id" type="button" mat-button (click)="addedOption.emit()">Add Option</button>
         <button type="button" mat-button (click)="canceled.emit()">Cancel</button>
       </mat-card-actions>
