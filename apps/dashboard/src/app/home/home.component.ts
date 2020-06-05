@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   data: any = [
-    {icon: "work", title:"Course", link: "/projects",
-    line1: "Teach anything you wish to using our course feature",
-    line2: "Users can view, create, edit & delete courses"},
+    {icon: "work", title:"Projects", link: "/projects",
+    line1: "Teach anything you wish to using our projects feature",
+    line2: "Users can view, create, edit & delete projects"},
     
     {icon: "help", title:"Questions", link: "/questions",
     line1: "Add & view questions without the constraint of a quiz",
