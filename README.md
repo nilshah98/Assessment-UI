@@ -1,84 +1,71 @@
-# AssessmentUi
+# Assessment System
 
-This project was generated using [Nx](https://nx.dev).
+## :confetti_ball: Features
+- Seamless sign in via `Google SignIn`
+- `Projects` ⇒ Teach anything you want
+- - View & Search projects created by you and others
+- - Create, Update & Delete your projects
+- `Question` ⇒ MCQ which can be used anywhere
+- - View & Search questions created by you and others
+- - Create your own MCQ, with **custom** number of options
+- `Quiz` ⇒ Create assessments for your teachings the smooth way
+- - View & Search Quiz created by you and others
+- - Create your own Quiz, by browsing through our pool of questions
+- `Exam` ⇒ Test & Analyse your results over various tests
+- - Filter through exams created by everyone
+- - Take exam, *notice that in the network tab, correctOptions aren't exposed*
+- - After attempting exam, view results ⇒ Percentile + Percentage *(doughnut)* chart
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="450"></p>
+## :cd: Installation
 
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
+### Backend [Repo Link](https://github.com/nilshah98/assessment-management)
+- Clone and Import this project, in the Java IDE of your choice.
+- Build the project.
+- - Errors after building ⇒ `log` not found. Refer [here](https://stackoverflow.com/questions/16627751/building-with-lomboks-slf4j-and-eclipse-cannot-find-symbol-log)
+- Config for `SQL Server` can be found at [here](https://github.com/nilshah98/assessment-management/blob/master/src/main/resources/application.yaml)
+- To config `CORS` and `CSRF`, Security config can be found [here](https://github.com/nilshah98/assessment-management/blob/master/src/main/java/com/accolite/assessmentmanagement/config/Security.java)
 
-## Quick Start & Documentation
+### Frontend [Repo Link](https://github.com/nilshah98/Assessment-UI)
+- Clone and navigate to the repo
+- Install dependencies ⇒ `npm i`
+- - For developer dependencies, use `--dev` flag
+- Proxy settings can be found [here](https://github.com/nilshah98/Assessment-UI/blob/master/proxy.conf.json)
+- - Config as per your backend settings, by default serve on `port 8080`
 
-[Nx Documentation](https://nx.dev/angular)
 
-[10-minute video showing all Nx features](https://nx.dev/angular/getting-started/what-is-nx)
+## :movie_camera: Screen Recordings
 
-[Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
+### Giving Exams + Results
+![](docs/assets/recordings/GiveExam.gif)
 
-## Adding capabilities to your workspace
+> Complete list of screen recordings can be found [here](docs/ScreenRecordings.md)
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+## :camera: UI Screenshots
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+### Home
+![](docs/assets/screenshots/Home.png)
 
-Below are some plugins which you can add to your workspace:
+> Complete list of screen recordings can be found [here](docs/Screenshots.md)
 
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
+## :file_folder: File Structure
+### Backend
+Main folder at `src/main/java`
+- Backend divided in 5 modules as per Spring MVC framework
+1. `Config` ⇒ All the configuration for the project, like Security
+2. `Model` ⇒ Model structure for various database entities
+3. `Repository` ⇒ JPA Link with Models
+4. `Resources` ⇒ Controllers, to route each query
+5. `Services` ⇒ To serve each request coming through the `Resources`
+> Flow ⇒ Resources > Services > Repository > Model
 
-## Generate an application
+### Frontend
+- `libs` ⇒ Contain all the shared module, namely `Material` and `Core-Data`. Placed here, for easier import and management
+- - `Material` ⇒ Manage import and export of angular material modules at one place
+- - `Core-Data` ⇒ `core-data/src/lib/` contains all the injectable services
+- `apps/dashboard/src` ⇒ Component folder, contains `assets` and `app`
+- - `app` ⇒ Contains all components
 
-Run `ng g @nrwl/angular:app my-app` to generate an application.
 
-> You can use any of the plugins above to generate applications as well.
+## :warning: Note
+Open for `enhancements` & `bug-fixes` ! 
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are sharable across libraries and applications. They can be imported from `@assessment-ui/mylib`.
-
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
