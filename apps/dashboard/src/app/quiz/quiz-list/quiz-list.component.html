@@ -6,7 +6,7 @@
     <mat-card>
         <mat-card-header *ngIf="quizes">
             <mat-card-title>
-                <h3 *ngIf="quizes[0].questions[0].correctOption; else examHeading">Quizes</h3>
+                <h3 *ngIf="(quizes.length==0 || quizes[0].questions[0].correctOption); else examHeading">Quizes</h3>
                 <ng-template #examHeading>
                     <h3>Exams</h3>
                 </ng-template>
